@@ -16,9 +16,7 @@ import lombok.Setter;
 public class GroupWorkDto {
 
 	private List<Integer> employeesId;
-	
 	private Work work;
-	
 	private Integer leaderId;
 	
 }

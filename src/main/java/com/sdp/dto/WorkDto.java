@@ -23,25 +23,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class WorkDto {
 
-public Integer workId;
-	
+	public Integer workId;
 	private String name;
-	
 	private String description;
-	
 	private Integer leaderId;
-	
 	private LocalDate startDate;
-	
 	private LocalDate endDate;
-	
-	
+
 	@Enumerated(EnumType.STRING)
 	private WorkType workType;
 	
-	
 	@Enumerated(EnumType.STRING)
 	private WorkStatus status;
-	
-	
 }

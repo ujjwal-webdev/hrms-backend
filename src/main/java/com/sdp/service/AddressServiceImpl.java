@@ -26,8 +26,6 @@ public class AddressServiceImpl implements AddressService{
 	@Autowired
 	private AddressRepository addressRepo;
 	
-	// this method will add the address.
-	
 	@Override
 	public Address addAddress(Address address) throws EmployeeException {
 		
@@ -41,7 +39,6 @@ public class AddressServiceImpl implements AddressService{
 		address.setEmployee(employee);
 		
 		return addressRepo.save(address);
-		
 	}
 
 	@Override

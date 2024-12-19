@@ -29,17 +29,11 @@ public class Department {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonIgnore
 	private Integer departmentId;
-	
-	
+
 	@NotBlank(message = "Please enter department name, It is must")
 	private String departmentName;
-	
-	
-	
+
 	@OneToMany(mappedBy = "department",cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Employee> employees = new ArrayList<>();
-	
-	
-	
 }

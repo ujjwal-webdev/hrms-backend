@@ -38,7 +38,6 @@ public class Work {
 	public Integer workId;
 	
 	private String name;
-	
 	private String description;
 	
 	@JsonIgnore
@@ -62,5 +61,4 @@ public class Work {
 	@ManyToMany
 	@JsonIgnore
 	private List<Employee> employees = new ArrayList<>();
-	
 }

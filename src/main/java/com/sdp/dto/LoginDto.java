@@ -18,7 +18,4 @@ public class LoginDto {
 	
 	@NotBlank(message = "password is mandatory...")
 	private String password;
-	
-	
-	
 }

@@ -1,6 +1,5 @@
 package com.sdp.model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +29,7 @@ public class OpenJobPosition {
 	private Integer jobId;
 
 	private String description;
-	
 	private String position;
-	
 	private String experienceRequired;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "openJobPosition")

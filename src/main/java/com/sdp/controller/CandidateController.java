@@ -23,7 +23,6 @@ import com.sdp.dto.OpenJobPositionDto;
 import com.sdp.model.JobCandidate;
 import com.sdp.service.EmployeeService;
 import com.sdp.service.JobCandidateService;
-import com.sdp.service.JobCandidateServiceImpl;
 import com.sdp.service.OpenJobPositionService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -43,67 +42,78 @@ public class CandidateController {
 	@Autowired
 	private EmployeeService employeeService;
 
-    // Endpoint to apply for a job ------- Candidate
+    // Apply for job API
     @PostMapping("/apply/{jobId}")
-    public ResponseEntity<JobCandidateDto> applyForJob(
-            @PathVariable Integer jobId,
-            @Valid @RequestBody JobCandidate jobCandidate) {
+    public ResponseEntity<JobCandidateDto> applyForJob(@PathVariable Integer jobId, @Valid @RequestBody JobCandidate jobCandidate)
+    {
         JobCandidateDto jobCandidateDto = jobCandidateService.applyForJob(jobCandidate, jobId);
+
         return new ResponseEntity<>(jobCandidateDto, HttpStatus.CREATED);
     }
 
-    // Endpoint to get all candidates for a job ---------- HR
+    // Get candidates by Job ID API
     @GetMapping("/job/{jobId}")
-    public ResponseEntity<List<JobCandidateDto>> getCandidatesByJobId(@PathVariable Integer jobId) {
+    public ResponseEntity<List<JobCandidateDto>> getCandidatesByJobId(@PathVariable Integer jobId)
+    {
         List<JobCandidateDto> candidates = jobCandidateService.getCandidatesByJobId(jobId);
+
         return new ResponseEntity<>(candidates, HttpStatus.OK);
     }
 
-    // Endpoint to update the status of a candidate ---------- HR
+    // Update Candidate status API
     @PutMapping("/status/{candidateId}")
-    public ResponseEntity<JobCandidateDto> updateCandidateStatus(
-            @PathVariable Integer candidateId,
-            @RequestParam String status) {
+    public ResponseEntity<JobCandidateDto> updateCandidateStatus(@PathVariable Integer candidateId, @RequestParam String status)
+    {
         JobCandidateDto updatedCandidate = jobCandidateService.updateCandidateStatus(candidateId, status);
+
         return new ResponseEntity<>(updatedCandidate, HttpStatus.OK);
     }
 
-    // Endpoint to get a candidate by ID -------- HR
+    // Get Candidate by ID API
     @GetMapping("/getCandidateById/{candidateId}")
-    public ResponseEntity<JobCandidateDto> getCandidateById(@PathVariable Integer candidateId) {
+    public ResponseEntity<JobCandidateDto> getCandidateById(@PathVariable Integer candidateId)
+    {
         JobCandidateDto candidateDto = jobCandidateService.getCandidateById(candidateId);
+
         return new ResponseEntity<>(candidateDto, HttpStatus.OK);
     }
-    
+
+    // Candidate Sign up API
     @PostMapping("/signup")// -------Candidate
-    public ResponseEntity<JobCandidateDto> signUpCandidate(@Valid @RequestBody JobCandidateDto jobCandidateDto) {
+    public ResponseEntity<JobCandidateDto> signUpCandidate(@Valid @RequestBody JobCandidateDto jobCandidateDto)
+    {
         JobCandidateDto savedCandidate = jobCandidateService.signUpCandidate(jobCandidateDto);
+
         return new ResponseEntity<>(savedCandidate, HttpStatus.CREATED);
     }
-    
+
+    // Candidate Sign in API
     @PostMapping("/signin")// ------Candidate
-    public ResponseEntity<JobCandidateDto> signInCandidate(@RequestBody CandidateSignInDto signInRequest) {
-        // Extract userName and password from the request body
+    public ResponseEntity<JobCandidateDto> signInCandidate(@RequestBody CandidateSignInDto signInRequest)
+    {
         String userName = signInRequest.getUserName();
         String password = signInRequest.getPassword();
 
-        // Call the service method
         JobCandidateDto candidate = jobCandidateService.signInCandidate(userName, password);
 
         return new ResponseEntity<>(candidate, HttpStatus.OK);
     }
-    
+
+    // Candidate application API
     @GetMapping("/getMyApplications")// ------- Candidate
-    public ResponseEntity<List<OpenJobPositionDto>> getMyApplications(@RequestParam String email) {
+    public ResponseEntity<List<OpenJobPositionDto>> getMyApplications(@RequestParam String email)
+    {
         List<OpenJobPositionDto> jobs = jobService.getJobsByCandidateEmail(email);
         
         return ResponseEntity.ok(jobs);
     }
     
-    // Get all job positions ------ Candidate
+    // Get all job positions API ------ Candidate
     @GetMapping("/getAllJobs")
-    public ResponseEntity<List<OpenJobPositionDto>> getAllJobs() {
+    public ResponseEntity<List<OpenJobPositionDto>> getAllJobs()
+    {
         List<OpenJobPositionDto> jobs = jobService.getAllJobs();
+
         return ResponseEntity.ok(jobs);
     }
 }

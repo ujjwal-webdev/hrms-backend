@@ -62,9 +62,7 @@ public class Employee {
 	private Gender gender;
 	
 	private Double salary;
-	
 	private String phoneNo;
-	
 	private LocalDate dateOfBirth;
 		
 	@CreationTimestamp

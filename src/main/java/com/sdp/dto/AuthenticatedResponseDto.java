@@ -11,5 +11,4 @@ public class AuthenticatedResponseDto {
     public AuthenticatedResponseDto(String token) {
         this.token = token;
     }
-
 }

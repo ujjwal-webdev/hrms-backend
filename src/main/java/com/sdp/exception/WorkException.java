@@ -2,13 +2,12 @@ package com.sdp.exception;
 
 public class WorkException extends Exception{
 
-	public WorkException() {
+	public WorkException()
+	{
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 	public WorkException(String mess) {
 		super(mess);
 	}
-
 }

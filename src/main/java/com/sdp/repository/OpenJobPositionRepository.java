@@ -11,8 +11,4 @@ import com.sdp.model.OpenJobPosition;
 @Repository
 public interface OpenJobPositionRepository extends JpaRepository<OpenJobPosition, Integer>{
 
-//	public Optional<Employee> findByUserName(String userName);
-//	
-//	public Employee findByPassword(String password);
-	
 }

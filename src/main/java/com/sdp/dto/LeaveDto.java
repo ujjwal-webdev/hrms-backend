@@ -25,17 +25,11 @@ import lombok.Setter;
 public class LeaveDto {
 
 	private Integer leaveId;
-	
 	private String reason;
 	
 	@Enumerated(EnumType.STRING)
 	private LeaveStatus status;
 	
 	private LocalDate leaveStartDate;
-	
 	private LocalDate leaveEndDate;
-	
-	
-	
-	
 }

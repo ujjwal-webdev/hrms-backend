@@ -14,9 +14,4 @@ public interface SkillService {
 	public Skill addSkill(Skill skill) throws EmployeeException;
 	
 	public List<Skill> getAllSkills() throws SkillException,EmployeeException;
-	
-//	public Address updateAddress(Integer addressId ,Address address) throws AddressException,EmployeeException;
-	
-//	public Address deleteAddress(Integer addressId) throws AddressException,EmployeeException;
-	
 }

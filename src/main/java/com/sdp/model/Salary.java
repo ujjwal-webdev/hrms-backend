@@ -1,13 +1,10 @@
 package com.sdp.model;
 
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,11 +25,8 @@ public class Salary {
 	private Integer salaryId;
 	
 	private Integer year;
-	
 	private Double salary;
-	
 	private Double bonusThatYear;
-	
 	private Double benefitPoints;
 	
 	@ManyToOne

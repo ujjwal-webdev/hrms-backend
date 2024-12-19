@@ -14,9 +14,4 @@ public interface WorkExperienceService {
 	public WorkExperience addWorkExperience(WorkExperience workExperience) throws EmployeeException;
 	
 	public List<WorkExperience> getAllWorkExperiences() throws WorkExperienceException,EmployeeException;
-	
-//	public Address updateAddress(Integer addressId ,Address address) throws AddressException,EmployeeException;
-	
-//	public Address deleteAddress(Integer addressId) throws AddressException,EmployeeException;
-	
 }

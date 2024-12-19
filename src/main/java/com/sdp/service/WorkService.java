@@ -48,6 +48,4 @@ public interface WorkService {
 	public List<WorkDto> getAllIndividualInCompletedWorks() throws WorkException;
 	
 	public List<WorkDto> getAllGroupInCompletedWorks() throws WorkException;
-	
-	
 }

@@ -10,7 +10,5 @@ import com.sdp.model.Work;
 public interface WorkRepository extends JpaRepository<Work, Integer>{
 
 	@Query("SELECT TIME_TO_SEC(TIMEDIFF(endDate,current_date()))/86400 FROM Work WHERE workId = ?1")
-	public Integer getDaysDiff(Integer workId); 
-	
-	
+	public Integer getDaysDiff(Integer workId);
 }

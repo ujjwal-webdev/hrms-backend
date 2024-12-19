@@ -11,5 +11,4 @@ import com.sdp.model.Department;
 public interface DepartmentRepository extends JpaRepository<Department, Integer>{
 
 	public Department findByDepartmentName(String deptName);
-	
 }

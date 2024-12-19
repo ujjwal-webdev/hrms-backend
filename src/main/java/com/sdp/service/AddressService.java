@@ -18,5 +18,4 @@ public interface AddressService {
 	public Address updateAddress(Integer addressId ,Address address) throws AddressException,EmployeeException;
 	
 	public Address deleteAddress(Integer addressId) throws AddressException,EmployeeException;
-	
 }

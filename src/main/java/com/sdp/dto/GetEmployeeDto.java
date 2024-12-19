@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import com.sdp.Enum.EmployeeOrAdmin;
 import com.sdp.Enum.Gender;
 import com.sdp.Enum.Role;
 
@@ -21,17 +20,11 @@ import lombok.Setter;
 public class GetEmployeeDto {
 
 	private Integer employeeId;
-	
 	private String name;
-	
 	private String email;
-	
 	private Integer departmentId;
-	
 	private String departmentName;
-	
 	private String userName;
-	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
@@ -39,10 +32,6 @@ public class GetEmployeeDto {
 	private Gender gender;
 	
 	private Double salary;
-	
 	private LocalDate dateOfBirth;
-	
 	private LocalDate joiningDate;
-	
-	
 }

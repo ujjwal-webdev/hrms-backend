@@ -59,10 +59,6 @@ public class LeaveServiceImpl implements LeaveService{
 		if(!leaves.isEmpty()) {
 			
 			Leave leavee = leaves.get(0);
-			// this will give the day difference between currentdate and leave end date
-			// if diff is negative means current date is greater than leave end date
-			// means now leave has expired so there is no meaning of that leave
-			// that's why i am deleting that leave;
 			Integer dayDiff = leaveRepo.getDaysDiff(leavee.getLeaveId());
 			
 			if(dayDiff <0) {
@@ -74,9 +70,6 @@ public class LeaveServiceImpl implements LeaveService{
 			}
 			
 		}
-			
-		// this is custom query it will find the difference between latest accepted leave request and current date if it will come negative
-		// it means employee are on leave and he can not apply for leave.
 		
 		List<Integer> acceptedLeave = leaveRepo.findLatestAcceptedLeaveReq(empId);
 		if(!acceptedLeave.isEmpty() && acceptedLeave.get(0) < 0)
@@ -121,9 +114,7 @@ public class LeaveServiceImpl implements LeaveService{
 		// if list is empty means admin already has applied for his leave now he can not applied
 		if(getPendingLeave.isEmpty())
 					throw new LeaveException("you can not update leave because admin has already responded to your leave request...");
-			
-		// if the flow is here means now he can update the request
-		// i am sure there can be at most only one request with status pending
+
 		int leaveId = getPendingLeave.get(0).getLeaveId();
 		
 		Leave leaveObj = leaveRepo.findById(leaveId).get();
@@ -131,8 +122,6 @@ public class LeaveServiceImpl implements LeaveService{
 		System.out.println(leaveObj.getLeaveId());
 		leave.setLeaveId(leaveObj.getLeaveId());
 		leave.setStatus(LeaveStatus.PENDING);
-		
-		// important line because i am not use cascade at children side
 		leave.setEmployee(employee);
 		Leave updateLeave = leaveRepo.save(leave);
 		
@@ -140,9 +129,7 @@ public class LeaveServiceImpl implements LeaveService{
 		return modelMapper.map(updateLeave, LeaveDto.class);
 	}
 
-	
-	
-	
+
 	// this will delete the leave request those have the status pending
 	@Override
 	@Transactional
@@ -170,9 +157,7 @@ public class LeaveServiceImpl implements LeaveService{
 		// if list is empty means admin already has applied for his leave now he can not applied
 		if(getPendingLeave.isEmpty())
 					throw new LeaveException("you can not update leave because admin has already responded to your leave request...");
-			
-		// if the flow is here means now he can update the request
-		// i am sure there can be at most only one request with status pending
+
 		Leave leave = getPendingLeave.get(0);
 
 		// never forget this line spend more than 6 hours
@@ -182,8 +167,6 @@ public class LeaveServiceImpl implements LeaveService{
 		return modelMapper.map(leave, LeaveDto.class);
 	}
 
-
-	
 	// this method will return the latest leave status
 	@Override
 	@Transactional
@@ -191,8 +174,7 @@ public class LeaveServiceImpl implements LeaveService{
 		
 		// getting currently loggedIn employee Id
 		Integer empId = getEmployee().getEmployeeId();
-			
-		
+
 		Employee employee = employeeRepo.findById(empId).orElseThrow(() -> new EmployeeException("employee does not exist with this Id"));
 		
 		// gives all the leaves of that employee
@@ -212,10 +194,6 @@ public class LeaveServiceImpl implements LeaveService{
 		if(!getPendingLeave.isEmpty()) {
 			
 			Leave leave = getPendingLeave.get(0);
-			// this will give the day difference between currentdate and leave end date
-			// if diff is negative means current date is greater than leave end date
-			// means now leave has expired so there is no meaning of that leave
-			// that's why i am deleting that leave and throwing exception;
 			Integer dayDiff = leaveRepo.getDaysDiff(leave.getLeaveId());
 			
 			if(dayDiff <0) {
@@ -227,9 +205,7 @@ public class LeaveServiceImpl implements LeaveService{
 			throw new LeaveException("Admin has not responded yet...");		
 			
 		}
-		
-		// if the flow is here it means there are no leaves with PENDING status
-		// this will give me the list of Integer meaning leaveId in desending order of leaveEndDate.
+
 		List<Integer> ids = leaveRepo.findLeaves(empId);
 			
 		// i am getting the first element means latest ACCEPTED or REJECTED leave
@@ -239,8 +215,7 @@ public class LeaveServiceImpl implements LeaveService{
 		return modelMapper.map(leave, LeaveDto.class);
 		
 	}
-	
-	// this method will give all leaves of a particular user 
+
 	@Override
 	public List<LeaveDto> getAllLeaves() throws EmployeeException, LeaveException {
 		
@@ -255,10 +230,6 @@ public class LeaveServiceImpl implements LeaveService{
 		if(getAllLeaves.isEmpty())
 					throw new LeaveException("No leaves found...");
 		
-	
-
-
-		
 		List<LeaveDto> dtoList = new ArrayList<>();
 		
 		for(Leave leave : getAllLeaves) {
@@ -266,7 +237,6 @@ public class LeaveServiceImpl implements LeaveService{
 		}
 		
 		return dtoList;
-		
 	}
 	
 	
@@ -280,12 +250,9 @@ public class LeaveServiceImpl implements LeaveService{
 		
 		String username = userDetails.getUsername();
 		
-		return employeeRepo.findByUserName(username).orElseThrow(() -> new RuntimeException("user does not exist")); 
-		
-		
+		return employeeRepo.findByUserName(username).orElseThrow(() -> new RuntimeException("user does not exist"));
 	}
 	
-
 
 	@Override
 	public List<LeaveDto> getAllLeavesHistory() throws LeaveException {
@@ -302,7 +269,6 @@ public class LeaveServiceImpl implements LeaveService{
 		
 		return dtoList;
 	}
-
 
 	@Override
 	public List<LeaveDto> getLeavesOfParticularEmployee(Integer empId) throws LeaveException, EmployeeException {
@@ -321,7 +287,6 @@ public class LeaveServiceImpl implements LeaveService{
 		}
 		
 		return dtoList;
-		
 	}
 
 
@@ -337,7 +302,6 @@ public class LeaveServiceImpl implements LeaveService{
 					  .collect(Collectors.toList());
 		
 	}
-
 
 	@Override
 	@Transactional
@@ -361,17 +325,5 @@ public class LeaveServiceImpl implements LeaveService{
 		
 		return modelMapper.map(leave,LeaveDto.class);
 	}
-
-
-		
-		
-	
-	
-
-	
-	
-	
-	
-	
 
 }

@@ -1,14 +1,11 @@
 package com.sdp.service;
 
-import com.sdp.controller.CandidateController;
-import com.sdp.dto.JobCandidateDto;
 import com.sdp.dto.OpenJobPositionDto;
 import com.sdp.exception.ResourceNotFoundException;
 import com.sdp.model.JobCandidate;
 import com.sdp.model.OpenJobPosition;
 import com.sdp.repository.JobCandidateRepository;
 import com.sdp.repository.OpenJobPositionRepository;
-import com.sdp.service.OpenJobPositionService;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

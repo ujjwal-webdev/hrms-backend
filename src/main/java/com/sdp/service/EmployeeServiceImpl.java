@@ -57,8 +57,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Autowired
 	private PasswordEncoder encoder;
 	
-	//////////////////////////////////////////////////////////////////////////////////
-	
 	// login functionality...
 	@Override
 	public AuthenticatedResponseDto login(LoginDto loginDto) {
@@ -75,7 +73,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	
 	
 	
-	// this method will registered employee as well as add employee in particular department. 
+	// this method will register employee as well as add employee in particular department.
 	
 	@Override
 	public AddEmployeeDto addEmployee(Integer departmentId,Employee employee) throws DepartmentException {
@@ -100,7 +98,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 	}
 
-	// this method will find the employee by using emlployee id or else it will throw user defined exception.
+	// this method will find the employee by using employee id or else it will throw user defined exception.
 	
 	@Override
 	public GetEmployeeDto getEmployeeByEmpId(Integer employeeId) throws EmployeeException {
@@ -119,7 +117,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return getEmployeeDto; 
 	}
 
-	// this method will find the employee by using emlployee userName or else it will throw user defined exception.
+	// this method will find the employee by using employee userName or else it will throw user defined exception.
 	
 	@Override
 	public GetEmployeeDto getEmployeeByEmpUserName(String userName) throws EmployeeException {
@@ -262,9 +260,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		getEmployeeDto.setDepartmentId(afterChangingDepartment.getDepartment().getDepartmentId());
 		getEmployeeDto.setDepartmentName(afterChangingDepartment.getDepartment().getDepartmentName());
 		
-		return getEmployeeDto; 
-		
-		
+		return getEmployeeDto;
 	}
 	
 	// this method will delete the employee
@@ -278,7 +274,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 		if(employee.getEmployeeOrAdmin() != EmployeeOrAdmin.EMPLOYEE)
 						throw new EmployeeException("Employee does not exist with this Id...");
 
-		
 		employeeRepo.delete(employee);
 		
 		GetEmployeeDto getEmployeeDto = modelMapper.map(employee, GetEmployeeDto.class);
@@ -290,18 +285,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 	}
 
-
-
-
 	@Override
 	public GetEmployeeDto viewProfile() {
 		
 		Employee employee = getEmployee();
 		
 		return modelMapper.map(employee, GetEmployeeDto.class);
-		
 	}
-
 
 	@Override
 	public GetEmployeeDto updateEmployee(UpdateEmployeeDto dto) {
@@ -319,16 +309,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 	}
 
-	
 	@Override
 	public String updatePassword(UpdatePasswordDto dto) throws PasswordException {
-		
-		
-		
+
 		Employee employee = getEmployee();
-		
-		
-		
 		
 		if(!dto.getNewPassword().equals(dto.getConfirmPassword()))
 						throw new PasswordException("confirm password and new password need to be same");
@@ -354,8 +338,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 		return modelMapper.map(admin,AdminDto.class);
 	}
-	
-	
 
 	@Override
 	public AdminDto registerAdmin(Employee admin) {
@@ -371,10 +353,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 		return modelMapper.map(completeSavedAdmin, AdminDto.class);
 	}
-
-
-	
-	
 
 	@Override
 	public Employee getEmployee() {
@@ -394,26 +372,4 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 		
 	}
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-	
-
-	
-	
-	
-	
 }

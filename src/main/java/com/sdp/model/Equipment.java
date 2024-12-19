@@ -1,6 +1,4 @@
 package com.sdp.model;
-
-
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -28,16 +26,11 @@ public class Equipment {
 	public Integer equipmentId;
 	
 	private String serialNumber;
-	
 	private String name;
-	
 	private String model;
-	
 	private LocalDate assignedDate;
 	
 	@ManyToOne
 	@JsonIgnore
 	private Employee employee;
-	
-	
 }

@@ -1,7 +1,5 @@
 package com.sdp.model;
 
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,10 +24,7 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer addressId;
-	
-	
 	private String houseNumber;
-	
 	private String colony;
 	
 	@NotBlank(message = "pincode is must")
@@ -40,11 +35,8 @@ public class Address {
 	
 	@NotBlank(message = "state name is must")
 	private String state;
-	
-	
+
 	@ManyToOne
 	@JsonIgnore
 	private Employee employee;
-	
-	
 }

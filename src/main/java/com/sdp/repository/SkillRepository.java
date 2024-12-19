@@ -6,10 +6,4 @@ import com.sdp.model.Skill;
 
 public interface SkillRepository extends JpaRepository<Skill, Integer>{
 
-//	@Modifying
-//	@Query("DELETE FROM Address WHERE addressId = ?1")
-//	public void myDeleteMethod(Integer AddressId);
-
-	
-	
 }

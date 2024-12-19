@@ -2,12 +2,12 @@ package com.sdp.exception;
 
 public class LeaveException extends Exception{
 
-	public LeaveException() {
+	public LeaveException()
+	{
 		// TODO Auto-generated constructor stub
 	}
 	
 	public LeaveException(String mess) {
 		super(mess);
 	}
-	
 }

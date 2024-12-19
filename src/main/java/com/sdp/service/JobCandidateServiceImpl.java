@@ -62,30 +62,11 @@ public class JobCandidateServiceImpl implements JobCandidateService {
         // Get the first candidate from the list (assuming a single unique candidate per email)
         JobCandidate existingCandidate = candidateList.get(0);
         
-//        JobCandidate candidate = jobCandidateRepository.findByUserName(userName);
-        
         // Check if the candidate has already applied for the job
         List<JobCandidate> candidates = jobCandidateRepository.findByEmailAndOpenJobPosition(existingCandidate.getEmail(), jobPosition);
         if (!candidates.isEmpty()) {
             throw new IllegalStateException("Candidate has already applied for this job.");
         }
-
-        // Set the job position for the candidate
-//        jobCandidate.setOpenJobPosition(jobPosition);
-//
-//        jobCandidate.setStatus("Pending");        
-//        // Save the candidate
-//        JobCandidate savedCandidate = jobCandidateRepository.save(jobCandidate);
-//        
-//        savedCandidate.getJobCandidateId();
-//        savedCandidate.getFirstName();
-//        savedCandidate.getLastName();
-//        savedCandidate.getEmail();
-//        savedCandidate.getStatus();
-//        savedCandidate.getOpenJobPosition().getJobId();
-//        log.info("hahaha: " + savedCandidate.getOpenJobPosition().getJobId());
-//       
-//        return modelMapper.map(savedCandidate, JobCandidateDto.class);
         
         existingCandidate.setOpenJobPosition(jobPosition);
         existingCandidate.setStatus("Pending");

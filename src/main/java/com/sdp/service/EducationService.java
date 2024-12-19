@@ -14,9 +14,4 @@ public interface EducationService {
 	public EducationBackground addEducation(EducationBackground educationBackground) throws EmployeeException;
 	
 	public List<EducationBackground> getAllEducations() throws EducationException,EmployeeException;
-	
-//	public Address updateAddress(Integer addressId ,Address address) throws AddressException,EmployeeException;
-	
-//	public Address deleteAddress(Integer addressId) throws AddressException,EmployeeException;
-	
 }

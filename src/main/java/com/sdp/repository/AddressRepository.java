@@ -11,7 +11,4 @@ public interface AddressRepository extends JpaRepository<Address, Integer>{
 	@Modifying
 	@Query("DELETE FROM Address WHERE addressId = ?1")
 	public void myDeleteMethod(Integer AddressId);
-
-	
-	
 }

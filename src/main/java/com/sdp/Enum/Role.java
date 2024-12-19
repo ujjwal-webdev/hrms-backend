@@ -6,5 +6,4 @@ public enum Role {
 	TESTER,
 	DEBUGGER,
 	HR
-	
 }

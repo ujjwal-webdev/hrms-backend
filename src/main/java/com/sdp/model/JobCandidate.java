@@ -1,6 +1,5 @@
 package com.sdp.model;
 
-
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -30,29 +29,24 @@ public class JobCandidate {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@JsonIgnore
 	private Integer jobCandidateId;
 	
 	private String firstName;
-	
 	private String lastName;
-	
 	private Integer age;
 	
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	
 	private String phoneNo;
-	
 	private LocalDate dateOfBirth;
-	
+
 	@NotNull
 	private String email;
 	
 	@NotNull
 	private String userName;
-	
-//	@JsonIgnore
+
 	@NotNull
 	@Size(max = 100)
 	private String password;
@@ -68,11 +62,8 @@ public class JobCandidate {
 	private String workCompany1Description;
 	
 	private String workCompany2;
-	
 	private String workCompany2Skills;
-	
 	private String workCompany2Description;
-	
 	private String education1;
 	
 	@NotNull
@@ -85,8 +76,6 @@ public class JobCandidate {
 	@Size(max = 1000)
 	private String education2Description;
 	
-//	private String jobId;
-	
 	private String status;
 	
 	private String address;
@@ -94,5 +83,4 @@ public class JobCandidate {
 	@ManyToOne
 	@JsonIgnore
 	private OpenJobPosition openJobPosition;
-	
 }

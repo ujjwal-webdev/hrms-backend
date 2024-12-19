@@ -13,5 +13,4 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 	public Optional<Employee> findByUserName(String userName);
 	
 	public Employee findByPassword(String password);
-	
 }

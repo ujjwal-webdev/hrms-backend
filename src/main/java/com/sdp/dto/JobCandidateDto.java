@@ -1,9 +1,11 @@
 package com.sdp.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.sdp.Enum.Gender;
 
+import com.sdp.model.JobCandidate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,4 +39,6 @@ public class JobCandidateDto {
     private String education2Description;
     private String status;
     private String address;
+
+    private List<OpenJobPositionDto> openJobPosition;
 }

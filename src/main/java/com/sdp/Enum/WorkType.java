@@ -4,6 +4,4 @@ public enum WorkType {
 
 	INDIVIDUAL,
 	GROUP
-	
-	
 }

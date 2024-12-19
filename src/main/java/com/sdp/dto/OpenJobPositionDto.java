@@ -16,12 +16,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OpenJobPositionDto {
 
-    private Integer jobId; // Optional for creation; mandatory for updates
+    private Integer jobId;
     private String description;
     private String position;
     private String experienceRequired;
 
-    // To display the candidates for a position, if needed
-//    @JsonIgnore
     private List<JobCandidate> jobCandidates;
 }

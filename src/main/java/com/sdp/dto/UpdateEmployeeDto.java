@@ -19,12 +19,10 @@ import lombok.Setter;
 public class UpdateEmployeeDto {
 
 	private String name;
-	
 	private String email;
 	
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	
 	private LocalDate dateOfBirth;
-	
 }

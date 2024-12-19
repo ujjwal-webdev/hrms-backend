@@ -28,14 +28,10 @@ public class EducationBackground {
 	private Integer educationBgId;
 	
 	private String instituteName;
-	
-	private String qualification; //B.Tech, M.Sc, Senior Secondary
-	
+	private String qualification;
 	private String major;
 	
 	@ManyToOne
 	@JsonIgnore
 	private Employee employee;
-	
-	
 }

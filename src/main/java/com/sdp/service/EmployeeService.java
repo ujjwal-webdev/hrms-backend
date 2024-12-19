@@ -47,10 +47,4 @@ public interface EmployeeService {
 	
 	public GetEmployeeDto deleteEmployee(Integer employeeId) throws EmployeeException;
 
-	
-
-	
-
-	
-	
 }

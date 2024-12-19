@@ -12,9 +12,5 @@ import lombok.Setter;
 public class UpdatePasswordDto {
 
 	private String newPassword;
-	
 	private String confirmPassword;
-	
-	
-	
 }

@@ -127,7 +127,7 @@ public class WorkServiceImpl implements WorkService{
 		// here I am checking that leader Is belongs to list of employees id or Not
 		if(!employeesId.contains(dto.getLeaderId()))throw new EmployeeException("Please Pass valid leader id") ;
 		
-		// here I am using hashmap for checking the frequency of employee id 
+		// here I am using hashmap for checking the frequency of employee id
 		// if frequecy of any employee Id is > 1 means that employee present more than one times in list
 		// and we can not assign the same work more than one times to same employee.
 		HashMap<Integer,Integer> hm = new HashMap<>();
@@ -177,8 +177,6 @@ public class WorkServiceImpl implements WorkService{
 		return worksDto;
 	}
 
-
-
 	@Override
 	public List<WorkDto> getAllIndividualWorks() throws WorkException {
 		
@@ -201,8 +199,6 @@ public class WorkServiceImpl implements WorkService{
 		
 	}
 
-
-
 	@Override
 	public List<WorkDto> getAllGroupWorks() throws WorkException {
 	
@@ -222,11 +218,7 @@ public class WorkServiceImpl implements WorkService{
 		}
 		
 		return worksDto;
-		
-		
 	}
-
-
 
 	@Override
 	public List<WorkDto> getAllPendingWorks() throws WorkException {
@@ -237,8 +229,7 @@ public class WorkServiceImpl implements WorkService{
 										  .filter((w) -> w.getStatus() == WorkStatus.PENDING)
 				                          .collect(Collectors.toList());
 
-		
-		
+
 		if(pendingWorks.isEmpty()) throw new WorkException("No work present...");
 		
 		List<WorkDto> worksDto = new ArrayList<>();
@@ -251,8 +242,6 @@ public class WorkServiceImpl implements WorkService{
 		return worksDto;
 		
 	}
-
-
 
 	@Override
 	public List<WorkDto> getAllIndividualPendingWorks() throws WorkException {
@@ -278,8 +267,6 @@ public class WorkServiceImpl implements WorkService{
 		
 	}
 
-
-
 	@Override
 	public List<WorkDto> getAllGroupPendingWorks() throws WorkException {
 		
@@ -301,11 +288,7 @@ public class WorkServiceImpl implements WorkService{
 		}
 		
 		return worksDto;
-		
-		
 	}
-
-
 
 	@Override
 	public List<WorkDto> getAllCompletedWorks() throws WorkException {
@@ -330,8 +313,6 @@ public class WorkServiceImpl implements WorkService{
 		return worksDto;
 		
 	}
-
-
 
 	@Override
 	public List<WorkDto> getAllIndividualCompletedWorks() throws WorkException {
@@ -520,11 +501,7 @@ public class WorkServiceImpl implements WorkService{
 		
 		return "Marked as Completed...";
 	}
-	
-	
-	
-	
-	
+
 	@Override
 	public Employee getEmployee() {
 		
@@ -539,8 +516,4 @@ public class WorkServiceImpl implements WorkService{
 		
 	}
 
-
-
-	
-	
 }

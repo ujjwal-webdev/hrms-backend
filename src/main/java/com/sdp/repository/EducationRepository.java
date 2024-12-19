@@ -8,10 +8,4 @@ import com.sdp.model.EducationBackground;
 
 public interface EducationRepository extends JpaRepository<EducationBackground, Integer>{
 
-//	@Modifying
-//	@Query("DELETE FROM Education WHERE educationBgId = ?1")
-//	public void myDeleteMethod(Integer educationBgId);
-
-	
-	
 }

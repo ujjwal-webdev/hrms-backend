@@ -1,6 +1,5 @@
 package com.sdp.model;
 
-
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -29,15 +28,10 @@ public class WorkExperience {
 	private Integer workExpId;
 	
 	private String companyName;
-	
 	private String designation;
-	
 	private LocalDate startDate;
-	
 	private LocalDate endDate;
-	
 	private String description;
-	
 	private String skillsUsed;
 	
 	@ManyToOne
